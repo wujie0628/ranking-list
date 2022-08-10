@@ -2,7 +2,8 @@
 基于redis的sorted set（zset）实现的排行榜，可以自定义多少小时和多少天内的排行榜数据，也可以支持当天排行榜、本周排行榜、本月排行榜。使用springboot自定义starter实现自动装配，开箱即用
 
 # 快速使用
-### 1、pom引入
+### 1、下载项目并maven打包到本地仓库
+### 2、pom引入
 ```
 <dependency>
     <groupId>com.github.wujie0628</groupId>
@@ -11,13 +12,13 @@
 </dependency>
 ```
 
-### 2、填写redis配置信息
+### 3、填写redis配置信息
 ```
 spring.redis.host=127.0.0.1
 spring.redis.port=6379
 spring.redis.password=123456
 ```  
-### 3、项目中直接引入使用
+### 4、项目中直接引入使用
 ```java
 public class TestController {
     
@@ -76,10 +77,10 @@ public interface RankService {
 ```
 ### 3.怎么自定义归并定时任务的执行时间
 ### 除了DAY_THIS这种类型，其他类型都会有一个定时任务来进行归并任务。
-* HOUR_UNIT *每个小时生成一个key值，定时任务执行时将“unionTime”个单位小时生成的key对应的set集合进行归并排序*
-* DAY_UNIT *每天生成一个key，定时任务执行时将“unionTime”个单位天生成的key对应的set集合进行归并排序*
-* WEEK_THIS *每天生成key，定时任务执行时将本周第一天到当天的所有key的set集合进行归并排序*
-* MONTH_THIS *每天生成key，定时任务执行时将本月第一天到稻田的所有key的set集合进行归并排序*
+* **HOUR_UNIT** *每个小时生成一个key值，定时任务执行时将“unionTime”个单位小时生成的key对应的set集合进行归并排序*
+* **DAY_UNIT** *每天生成一个key，定时任务执行时将“unionTime”个单位天生成的key对应的set集合进行归并排序*
+* **WEEK_THIS** *每天生成key，定时任务执行时将本周第一天到当天的所有key的set集合进行归并排序*
+* **MONTH_THIS** *每天生成key，定时任务执行时将本月第一天到稻田的所有key的set集合进行归并排序*
 * 以上，get方法直接取归并后的集合列表
 ### 自定义定时任务时间的配置如下：
 ```yaml
