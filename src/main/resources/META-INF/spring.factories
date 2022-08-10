@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.github.wujie0628.rankinglist.vo.RedisKey,\
+com.github.wujie0628.rankinglist.service.HourUnitRankServiceImpl,\
+com.github.wujie0628.rankinglist.config.RedisConfig,\
+com.github.wujie0628.rankinglist.config.RankBeanPostProcessor,\
+com.github.wujie0628.rankinglist.job.RankTask,\
+com.github.wujie0628.rankinglist.vo.SchedulingPatternProperties
